@@ -27,10 +27,11 @@ def main(input_filepath, output_filepath):
     """
     logger = logging.getLogger(__name__)
     logger.info('making final data set from raw data')
-
+    # Creates the folder for the raw data
     os.makedirs(input_filepath, exist_ok=True)
+    # Downloads the raw data from Huggingface datasets
     raw_datasets = load_dataset("imdb",cache_dir=input_filepath)
-
+    
     global tokenizer
     tokenizer = AutoTokenizer.from_pretrained("bert-base-cased")
 
