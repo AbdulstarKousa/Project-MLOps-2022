@@ -7,6 +7,23 @@ A short description of the project:
 - FrameWork to be decided 
 
 
+> Overall goal of the project:
+@to-do
+
+> What framework are you going to use (Kornia, Transformer, Pytorch-Geometrics)?
+@to-do
+
+> How to you intend to include the framework into your project?
+@to-do
+
+> What data are you going to run on (initially, may change)?
+@to-do
+
+> What deep learning models do you expect to use?
+@to-do
+
+
+
 Project Organization
 ------------
 
