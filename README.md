@@ -8,6 +8,15 @@ A short description of the project:
 - To get setup with both code and data by simply running:
     - `git clone https://github.com/AbdulstarKousa/Project-MLOps-2022.git`
     - `dvc pull`
+
+In this project we make use of the [Hugging Face Transformer](https://huggingface.co/docs/transformers) framework to create a binary sentiment classifier for review’s given to highly polarized movies on [IMDb](https://www.imdb.com).
+The dataset is available on the [Hugging Face Github](https://github.com/huggingface/datasets/tree/master/datasets/imdb) page.
+
+The model used for performing the classification is a **Bidirectional Encoder Representations from Transformers** also known as [**BERT**](https://arxiv.org/abs/1810.04805).
+Transfer learning will be applied by training a pre-trained model on 25.000 positive/negative labeled movie reviews, and then evaluated on another 25.000 reviews.
+Different configurations of BERT will be trained and evaluated.
+
+The whole pipeline is also available as a Docker-Image:
   
 ---
 > Overall goal of the project:
