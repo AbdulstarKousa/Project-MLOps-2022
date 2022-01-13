@@ -121,5 +121,3 @@ def test_label_rep():
 
     train_rep, test_rep = rep(train), rep(test)
     assert train_rep == True, test_rep == True
-
-test_label_rep()
