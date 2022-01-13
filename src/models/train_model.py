@@ -30,7 +30,6 @@ def train(cfg: DictConfig):
         learning_rate=cfg.training.learning_rate,
         do_train=cfg.training.do_train,
         do_eval=cfg.training.do_eval,
-        evaluate_during_training=cfg.training.evaluate_during_training,
         overwrite_output_dir=cfg.training.overwrite_output_dir,
         evaluation_strategy=cfg.training.evaluation_strategy,
         metric_for_best_model=cfg.training.metric_for_best_model,
