@@ -1,6 +1,10 @@
 #training.yaml
-epochs: 30
+epochs: 4
 batch_size: 64
 learning_rate: 1e-4
-seed: 42
-force_cpu: False
+do_train: True
+do_eval: True
+evaluate_during_training: True
+overwrite_output_dir: True
+evaluation_strategy: "steps"
+metric_for_best_model: "eval_acc"
