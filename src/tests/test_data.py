@@ -97,19 +97,19 @@ def rep(data):
     in the dataset `data`.'''
     labels = [0,1]
     data_rep = False
-    # Iteratively check if 
+    # Iteratively check if all labels are represented
     for i in range(len(data)-1):
         row = data[i]
         label = row['label']
         if label in labels:
             try:
+                # If label found, remove from list
                 labels.pop(label)
             except IndexError:
-                
+                # List is empty, so all labels 
+                # are represented
+                data_rep = True
                 break
-        if len(labels)==0:
-            data_rep = True
-            break
 
     return data_rep
 
