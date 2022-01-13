@@ -1,10 +1,11 @@
 import logging
 from datetime import datetime
 
-import wandb
 import hydra
+import wandb
 from omegaconf import DictConfig, OmegaConf
-from transformers import AutoModelForSequenceClassification, TrainingArguments, Trainer, TrainingArguments
+from transformers import (AutoModelForSequenceClassification, Trainer,
+                          TrainingArguments)
 
 from src import _PATH_MODELS
 from src.data.make_dataset import load_data
@@ -17,23 +18,33 @@ logger = logging.getLogger(__name__)
 def train(cfg: DictConfig):
     logger.info((f"Configuration: \n {OmegaConf.to_yaml(cfg)}"))
     logger.info("Load data")
-    train_dataset,test_dataset = load_data()
+    train_dataset, test_dataset = load_data()
 
     # Loads pretrained BERT model from hugging-face
-    model = AutoModelForSequenceClassification.from_pretrained("bert-base-cased", num_labels=2, cache_dir=_PATH_MODELS)
-    
-    training_args = TrainingArguments(output_dir=_PATH_MODELS,
-                                      learning_rate=cfg.training.learning_rate,
-                                      do_train = cfg.training.do_train,
-                                      do_eval = cfg.training.do_eval,
-                                      evaluate_during_training = cfg.training.evaluate_during_training,
-                                      overwrite_output_dir = cfg.training.overwrite_output_dir,
-                                      evaluation_strategy = cfg.training.evaluation_strategy,
-                                      metric_for_best_model = cfg.training.metric_for_best_model,
-                                      per_device_train_batch_size = cfg.training.batch_size,
-                                      report_to="wandb")
-    trainer = Trainer(model=model, args=training_args, train_dataset=train_dataset, eval_dataset=test_dataset)
+    model = AutoModelForSequenceClassification.from_pretrained(
+        "bert-base-cased", num_labels=2, cache_dir=_PATH_MODELS
+    )
+
+    training_args = TrainingArguments(
+        output_dir=_PATH_MODELS,
+        learning_rate=cfg.training.learning_rate,
+        do_train=cfg.training.do_train,
+        do_eval=cfg.training.do_eval,
+        evaluate_during_training=cfg.training.evaluate_during_training,
+        overwrite_output_dir=cfg.training.overwrite_output_dir,
+        evaluation_strategy=cfg.training.evaluation_strategy,
+        metric_for_best_model=cfg.training.metric_for_best_model,
+        per_device_train_batch_size=cfg.training.batch_size,
+        report_to="wandb",
+    )
+    trainer = Trainer(
+        model=model,
+        args=training_args,
+        train_dataset=train_dataset,
+        eval_dataset=test_dataset,
+    )
     trainer.train()
+
 
 def main():
     """Runs training loop"""
