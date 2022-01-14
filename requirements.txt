@@ -8,6 +8,8 @@ awscli
 flake8
 black
 pipreqs
+dvc
+dvc[gs]
 matplotlib==3.4.3
 numpy==1.21.2
 pytest==6.2.5
