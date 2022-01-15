@@ -23,6 +23,14 @@ jobs:
         path: ~/.cache/pip
         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/requirements.txt') }}
 
+    - name: Cache data
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-data
+      with:
+        path: ~/data
+        key: ${{ runner.os }}-build-${{ env.cache-name }}
+
     - name: Set up Python 3.8
       uses: actions/setup-python@v2
       with:
@@ -31,7 +39,8 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        # We only need requirements_tests.txt since
+        # requirements.txt is included in `make data`
         pip install -r requirements_tests.txt
         
     - name: Test with pytest and coverage
@@ -39,12 +48,6 @@ jobs:
         make data
         coverage run -m pytest
         coverage 
-
-    - name: Archive data artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: data
-        path: data
 
     # - name: Archive code coverage results
     #   uses: actions/upload-artifact@v2
