@@ -21,8 +21,7 @@ jobs:
         cache-name: cache-python-modules
       with:
         path: ~/.cache/pip
-        VERSION=$(python isort --version)
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-isort-$VERSION
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-isort
 
     - name: Set up Python 3.8
       uses: actions/setup-python@v2

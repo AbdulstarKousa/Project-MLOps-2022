@@ -21,8 +21,7 @@ jobs:
         cache-name: cache-python-modules
       with:
         path: ~/.cache/pip
-        VERSION=$(python flake8 --version)
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-flake8-$VERSION
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-flake8
 
     - name: Set up Python 3.8
       uses: actions/setup-python@v2
