@@ -1,7 +1,13 @@
-import os, itertools, sys, pytest
+import itertools
+import os
+import sys
+
 import pandas as pd
+import pytest
+
 from src import _PATH_DATA
-from src.data.make_dataset import raw_data, process_data, load_data
+from src.data.make_dataset import load_data, process_data, raw_data
+
 
 def get_folder_structure(path):
   '''Returns the folder structure from the `path` variable.

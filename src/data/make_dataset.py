@@ -7,6 +7,7 @@ from transformers import AutoTokenizer
 
 from src import _PATH_DATA
 
+
 def load_data():
     train_datasets = Dataset.from_pandas(
         pd.read_pickle(_PATH_DATA + "/processed/train.pkl")
