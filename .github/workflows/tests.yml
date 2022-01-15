@@ -28,7 +28,7 @@ jobs:
       env:
         cache-name: cache-data
       with:
-        path: ~/data
+        path: **/data
         key: ${{ runner.os }}-build-${{ env.cache-name }}
 
     - name: Set up Python 3.8
