@@ -20,7 +20,7 @@ jobs:
       env:
         cache-name: cache-python-modules
       with:
-        path: ~/.pip
+        path: ~/.cache/pip
         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/requirements.txt') }}
 
     - name: Set up Python 3.8
