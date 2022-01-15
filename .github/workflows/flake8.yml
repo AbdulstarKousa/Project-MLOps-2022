@@ -21,7 +21,7 @@ jobs:
         cache-name: cache-python-modules
       with:
         path: ~/.cache/pip
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/requirements.txt') }}
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-flake8
 
     - name: Set up Python 3.8
       uses: actions/setup-python@v2
@@ -35,7 +35,9 @@ jobs:
         
     - name: Run flake8 on the project
       run: |
-        flake8
+        flake8 .
+
+    # need multiple caches, one for flake8, one for isort
 
 
 
