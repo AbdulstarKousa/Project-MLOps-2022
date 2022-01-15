@@ -25,9 +25,11 @@ RUN pip install --upgrade pip
 RUN git clone https://github.com/AbdulstarKousa/Project-MLOps-2022.git
 WORKDIR Project-MLOps-2022/
 RUN pip install -r requirements.txt --no-cache-dir
+RUN chmod 774 clone_pull.sh
 #RUN dvc pull
 
+ENTRYPOINT ["./clone_pull.sh"]
 CMD ["bash"]
-ENTRYPOINT ["./directories.sh"]
+
 #CMD ["bash"]
 #ENTRYPOINT ["python3"]
