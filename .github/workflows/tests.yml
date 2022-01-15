@@ -44,7 +44,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: data
-        path: **/data
+        path: data
 
     # - name: Archive code coverage results
     #   uses: actions/upload-artifact@v2
