@@ -6,6 +6,7 @@ Sphinx
 coverage
 awscli
 flake8
+isort
 black
 pipreqs
 dvc
