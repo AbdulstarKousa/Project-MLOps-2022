@@ -37,8 +37,6 @@ jobs:
       run: |
         flake8 .
 
-    # need multiple caches, one for flake8, one for isort
-
 
 
     
