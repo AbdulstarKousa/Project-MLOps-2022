@@ -25,4 +25,5 @@ jobs:
         pip install -r requirements_tests.txt
     - name: Test with pytest and coverage
       run: |
+        make data
         coverage run -m pytest
