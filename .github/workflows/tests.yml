@@ -2,9 +2,9 @@ name: "Run tests"
 
 on:
   push:
-    branches: [ master, main ]
+    branches: [ master, main, cache ]
   pull_request:
-    branches: [ master, main ]
+    branches: [ master, main, cache ]
 
 jobs:
   build:
@@ -14,16 +14,45 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+
+    - name: Cache modules
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-python-modules
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/requirements.txt') }}
+
+    - name: Cache data
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-data
+      with:
+        path: '**/data'
+        key: ${{ runner.os }}-build-${{ env.cache-name }}
+
     - name: Set up Python 3.8
       uses: actions/setup-python@v2
       with:
         python-version: 3.8
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        # We only need requirements_tests.txt since
+        # requirements.txt is included in `make data`
         pip install -r requirements_tests.txt
+        
     - name: Test with pytest and coverage
       run: |
         make data
         coverage run -m pytest
+        coverage report
+
+    # - name: Archive code coverage results
+    #   uses: actions/upload-artifact@v2
+    #   with:
+    #     name: code-coverage
+    #     path: 
+
+    
