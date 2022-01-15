@@ -47,7 +47,7 @@ jobs:
       run: |
         make data
         coverage run -m pytest
-        coverage 
+        coverage report
 
     # - name: Archive code coverage results
     #   uses: actions/upload-artifact@v2
