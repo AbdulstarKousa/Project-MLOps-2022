@@ -36,8 +36,8 @@ jobs:
         
     - name: Run isort on the project
       run: |
-        black .
-        flake8 .
+        black src
+        flake8 src
 
 
 

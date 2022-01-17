@@ -21,6 +21,7 @@ def load_data():
 def tokenize_function(examples):
     return tokenizer(examples["text"], padding="max_length", truncation=True)
 
+
 def raw_data(cache=True):
     """Runs data processing scripts to turn raw data from (../raw) into
     cleaned data ready to be analyzed (saved in ../processed).
@@ -37,6 +38,7 @@ def raw_data(cache=True):
 
     return raw_datasets
 
+
 def process_data(raw_datasets):
     global tokenizer
     tokenizer = AutoTokenizer.from_pretrained("bert-base-cased")
@@ -49,9 +51,11 @@ def process_data(raw_datasets):
     full_train_dataset.to_pandas().to_pickle(_PATH_DATA + "/processed/train.pkl")
     full_test_dataset.to_pandas().to_pickle(_PATH_DATA + "/processed/test.pkl")
 
+
 def main():
     raw_datasets = raw_data()
     process_data(raw_datasets)
+
 
 if __name__ == "__main__":
     log_fmt = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
