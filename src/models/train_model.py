@@ -35,6 +35,7 @@ def train(cfg: DictConfig):
         metric_for_best_model=cfg.training.metric_for_best_model,
         per_device_train_batch_size=cfg.training.batch_size,
         report_to="wandb",
+        dataloader_num_workers = 0 # or 4 add the number of loader 
     )
     trainer = Trainer(
         model=model,
