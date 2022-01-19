@@ -47,13 +47,10 @@ jobs:
       run: |
         make data
         coverage run -m pytest
-        coverage report
 
-
-    # - name: Archive code coverage results
-    #   uses: actions/upload-artifact@v2
-    #   with:
-    #     name: code-coverage
-    #     path: 
+     - name: Upload coverage to codecov
+       uses: actions/codecov/codecov-action@v1
+       with:
+ 
 
     
