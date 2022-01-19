@@ -78,8 +78,8 @@ def test_same_size():
 def test_shape_eq():
     """Tests whether the shape of the train and test datasets
     is as expected."""
-    train_shape = (25000, 5)
-    test_shape = (25000, 5)
+    train_shape = (1000, 4)
+    test_shape = (1000, 4)
 
     prepare_data()
     train, test = load_data()
@@ -93,6 +93,9 @@ def test_point_eq():
     and string field 'text'
     """
 
+    # Expected number of features
+    num_features = 4
+
     prepare_data()
     train, test = load_data()
 
@@ -104,10 +107,10 @@ def test_point_eq():
     dtypes_test = [feature.dtype for feature in features_test.values()]
 
     # The data types which are expected
-    types = ["list", "list", "int64", "string", "list"]
+    types = ["list", "list", "int64", "string"]
 
     assert (
-        train.num_columns == test.num_columns == 5
+        train.num_columns == test.num_columns == num_features
         and dtypes_train == dtypes_test == types
     )
 
@@ -115,24 +118,24 @@ def test_point_eq():
 def rep(data):
     """Checks if all labels are represented
     in the dataset `data`."""
+
     labels = [0, 1]
-    data_rep = False
+
     # Iteratively check if all labels are represented
     for i in range(len(data) - 1):
         row = data[i]
         label = row["label"]
         contains = label in labels
-        if contains:
-            try:
-                # If label found, remove from list
-                labels.pop(label)
-            except IndexError:
-                # List is empty, so all labels
-                # are represented
-                data_rep = True
-                break
 
-    return data_rep
+        if contains and labels:
+            # If label found, remove from list
+            labels.pop(label)
+        elif not labels:
+            # List is empty, so all labels
+            # are represented
+            return True
+
+    return False
 
 
 def test_label_rep():
@@ -167,6 +170,3 @@ def test_tokenizer():
 
     assert len(decoded) == max_length
     assert len(not_padding) == num_tokens
-
-
-test_tokenizer()
