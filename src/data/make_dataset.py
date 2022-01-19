@@ -22,20 +22,14 @@ def tokenize_function(examples):
     return tokenizer(examples["text"], padding="max_length", truncation=True)
 
 
-def raw_data(cache=True):
+def raw_data():
     """Runs data processing scripts to turn raw data from (../raw) into
     cleaned data ready to be analyzed (saved in ../processed).
     """
     logger = logging.getLogger(__name__)
     logger.info("making final data set from raw data")
     # Downloads the raw data from Huggingface datasets
-    if cache:
-        raw_datasets = load_dataset("imdb", cache_dir=_PATH_DATA + "/raw/")
-    else:
-        # For testing purposes, no cache is used to make tests
-        # independent from using the cache
-        raw_datasets = load_dataset("imdb")
-
+    raw_datasets = load_dataset("imdb", cache_dir=_PATH_DATA + "/raw/")
     return raw_datasets
 
 
@@ -56,12 +50,12 @@ def process_data(raw_datasets):
     full_test_dataset.to_pandas().to_pickle(_PATH_DATA + "/processed/test.pkl")
 
 
-def main():
+def main():  # pragma: no cover
     raw_datasets = raw_data()
     process_data(raw_datasets)
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # pragma: no cover
     log_fmt = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
     logging.basicConfig(level=logging.INFO, format=log_fmt)
 
