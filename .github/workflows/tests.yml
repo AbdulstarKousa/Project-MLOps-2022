@@ -53,6 +53,7 @@ jobs:
       run: |
         make data
         coverage run -m pytest
+        coverage xml
 
     - name: Upload coverage to codecov
       uses: codecov/codecov-action@v2
