@@ -48,9 +48,9 @@ jobs:
         make data
         coverage run -m pytest
 
-     - name: Upload coverage to codecov
-       uses: codecov/codecov-action@v1
-       with:
+    - name: Upload coverage to codecov
+      uses: codecov/codecov-action@v2
+      with:
 
  
 
