@@ -1,0 +1,5 @@
+outs:
+- md5: f6a7c68f715e09844af24c51f7265205.dir
+  size: 804278578
+  nfiles: 11
+  path: best_model
