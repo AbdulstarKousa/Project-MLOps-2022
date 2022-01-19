@@ -1,7 +1,6 @@
 import itertools
 import os
 import sys
-import pickle
 
 import pandas as pd
 
@@ -152,19 +151,22 @@ def test_tokenizer():
     train, test = load_data()
     # Maximum length of a sequence that the model can receive
     max_length = 512
-    test_string = 'Testing test tested Alice Bob 1 2 3 and #'
+    test_string = "Testing test tested Alice Bob 1 2 3 and #"
     # Number of expected tokens for the test string
     num_tokens = 10
 
     global tokenizer
     tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
 
-    tokenized = tokenize_function({'text':test_string})
+    tokenized = tokenize_function({"text": test_string})
 
-    decoded = tokenizer.decode(tokenized['input_ids']).split(' ')
-    not_padding = [token for token in decoded if token not in ['[PAD]','[SEP]','[CLS]']]
-    
+    decoded = tokenizer.decode(tokenized["input_ids"]).split(" ")
+    not_padding = [
+        token for token in decoded if token not in ["[PAD]", "[SEP]", "[CLS]"]
+    ]
+
     assert len(decoded) == max_length
     assert len(not_padding) == num_tokens
 
-test_tokenizer()    
+
+test_tokenizer()
