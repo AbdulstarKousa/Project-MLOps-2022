@@ -41,7 +41,7 @@ def raw_data(cache=True):
 
 def process_data(raw_datasets):
     global tokenizer
-    tokenizer = AutoTokenizer.from_pretrained("bert-base-cased")
+    tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
 
     tokenized_datasets = raw_datasets.map(tokenize_function, batched=True)
 

@@ -20,7 +20,7 @@ def train(cfg: DictConfig):
 
     # Loads pretrained BERT model from hugging-face
     model = AutoModelForSequenceClassification.from_pretrained(
-        "bert-base-cased", num_labels=2, cache_dir=_PATH_MODELS
+        "distilbert-base-uncased", num_labels=2, cache_dir=_PATH_MODELS
     )
 
     training_args = TrainingArguments(
