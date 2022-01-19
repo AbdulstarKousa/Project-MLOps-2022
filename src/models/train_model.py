@@ -16,6 +16,9 @@ logger = logging.getLogger(__name__)
 def train(cfg: DictConfig):
     logger.info((f"Configuration: \n {OmegaConf.to_yaml(cfg)}"))
     logger.info("Load data")
+    wandb.log({"learning_rate":cfg.training.learning_rate,
+               "batch_size":cfg.training.batch_size,
+               "epochs":cfg.training.epochs})
     train_dataset, test_dataset = load_data()
 
     # Loads pretrained BERT model from hugging-face
