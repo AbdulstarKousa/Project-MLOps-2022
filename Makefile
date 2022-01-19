@@ -36,7 +36,7 @@ train:
 
 predict:
 	$(PYTHON_INTERPRETER) src/models/predict_model.py
-	
+
 ## Delete all compiled Python files
 clean:
 	find . -type f -name "*.py[co]" -delete

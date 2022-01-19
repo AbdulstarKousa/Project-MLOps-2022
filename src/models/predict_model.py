@@ -1,10 +1,6 @@
-import numpy as np
-import torch
-from transformers import (AutoModelForSequenceClassification, AutoTokenizer,
-                          pipeline)
+from transformers import AutoModelForSequenceClassification, AutoTokenizer, pipeline
 
-from src import _PATH_MODELS, _PROJECT_ROOT
-from src.data.make_dataset import load_data
+from src import _PROJECT_ROOT
 
 label_dict = {"LABEL_0": "NEGATIVE", "LABEL_1": "POSITIVE"}
 

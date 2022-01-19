@@ -6,8 +6,7 @@ import pandas as pd
 from transformers import AutoTokenizer
 
 from src import _PATH_DATA
-from src.data.make_dataset import (load_data, process_data, raw_data,
-                                   tokenize_function)
+from src.data.make_dataset import load_data, process_data, raw_data, tokenize_function
 
 
 def get_folder_structure(path):

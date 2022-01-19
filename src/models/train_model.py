@@ -4,12 +4,11 @@ from datetime import datetime
 import hydra
 import numpy as np
 import torch
+import wandb
 from datasets import load_metric
 from omegaconf import DictConfig, OmegaConf
-from transformers import (AutoModelForSequenceClassification, Trainer,
-                          TrainingArguments)
+from transformers import AutoModelForSequenceClassification, Trainer, TrainingArguments
 
-import wandb
 from src import _PATH_MODELS
 from src.data.make_dataset import load_data
 
