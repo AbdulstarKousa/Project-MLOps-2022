@@ -45,8 +45,8 @@ def process_data(raw_datasets):
 
     tokenized_datasets = raw_datasets.map(tokenize_function, batched=True)
 
-    full_train_dataset = tokenized_datasets["train"]
-    full_test_dataset = tokenized_datasets["test"]
+    full_train_dataset = tokenized_datasets["train"].shuffle(seed=42).select(range(1000)) #  a small subset of the training data
+    full_test_dataset = tokenized_datasets["test"].shuffle(seed=42).select(range(1000))   #  a small subset of the testing data
 
     full_train_dataset.to_pandas().to_pickle(_PATH_DATA + "/processed/train.pkl")
     full_test_dataset.to_pandas().to_pickle(_PATH_DATA + "/processed/test.pkl")
