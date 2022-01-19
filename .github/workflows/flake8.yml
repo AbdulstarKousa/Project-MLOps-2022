@@ -32,6 +32,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install black
+        pip install autoflake
         pip install flake8
         
     - name: Run black on the project
@@ -42,6 +43,7 @@ jobs:
 
     - name: Run flake8 on the project
       run: |
+        autoflake -r src
         flake8 src
 
 

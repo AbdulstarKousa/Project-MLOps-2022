@@ -23,13 +23,18 @@ jobs:
         path: ~/.cache/pip
         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/requirements.txt') }}
 
+    - name: Hash data folder
+      uses: theowenyoung/folder-hash@v2.0.1
+      with:
+        path: '**/data'
+
     - name: Cache data
       uses: actions/cache@v2
       env:
         cache-name: cache-data
       with:
         path: '**/data'
-        key: ${{ runner.os }}-build-${{ env.cache-name }}
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ steps.hash_data_folder.outputs.hash }}
 
     - name: Set up Python 3.8
       uses: actions/setup-python@v2
