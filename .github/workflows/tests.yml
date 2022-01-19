@@ -26,7 +26,7 @@ jobs:
     - name: Hash data folder
       uses: theowenyoung/folder-hash@v2.0.1
       with:
-        path: '**/data'
+        path: data
 
     - name: Cache data
       uses: actions/cache@v2
