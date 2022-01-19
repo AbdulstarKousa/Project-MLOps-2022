@@ -34,9 +34,13 @@ jobs:
         pip install black
         pip install flake8
         
+    - name: Run black on the project
+    - uses: psf/black@stable
+      with:
+        src: './src'
+
     - name: Run flake8 on the project
       run: |
-        black src
         flake8 src
 
 
