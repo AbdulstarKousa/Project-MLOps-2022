@@ -1,4 +1,5 @@
 [flake8]
 exclude = venv
 ignore = W503 # W503: Line break occurred before binary operator
+extend-ignore = E203, E262 # black does not fix E262 for some reason
 max-line-length = 120
