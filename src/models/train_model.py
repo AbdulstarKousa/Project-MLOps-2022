@@ -4,6 +4,7 @@ import hydra
 import wandb
 from omegaconf import DictConfig, OmegaConf
 from transformers import AutoModelForSequenceClassification, Trainer, TrainingArguments
+import torch
 
 from src import _PATH_MODELS
 from src.data.make_dataset import load_data
@@ -19,6 +20,7 @@ def train(cfg: DictConfig):
     wandb.log({"learning_rate":cfg.training.learning_rate,
                "batch_size":cfg.training.batch_size,
                "epochs":cfg.training.epochs})
+    torch.cuda.empty_cache()
     train_dataset, test_dataset = load_data()
 
     # Loads pretrained BERT model from hugging-face
@@ -36,7 +38,7 @@ def train(cfg: DictConfig):
         metric_for_best_model=cfg.training.metric_for_best_model,
         per_device_train_batch_size=cfg.training.batch_size,
         report_to="wandb",
-        dataloader_num_workers=0,  # or 4 add the number of loader
+        dataloader_num_workers=4,  # or 4 add the number of loader
     )
     trainer = Trainer(
         model=model,
