@@ -5,5 +5,6 @@ learning_rate: 1e-4
 do_train: True
 do_eval: True
 overwrite_output_dir: True
-evaluation_strategy: "steps"
-metric_for_best_model: "eval_acc"
+evaluation_strategy: "epoch"
+load_best_model_at_end: True
+metric_for_best_model: "eval_accuracy"
