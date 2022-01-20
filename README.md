@@ -13,6 +13,14 @@ A short description of the project:
 - To run the docker image interactively:
     - `docker run -it gcr.io/team-x-338109/main:latest`
 
+A trained deployable model is provided in a docker image
+- To pull the deployable image from gcp run the following command:
+    - `docker pull gcr.io/team-x-338109/deploy:latest`
+- To deploy the model locally run the docker image using the following command: 
+    - `docker run -d -p 8080:8080 --name=local_deploy gcr.io/team-x-338109/deploy:latest`
+- A text file with a review can be provided for inference using:
+    - `curl localhost:8080/predictions/distilbert -T review.txt`
+
 In this project we make use of the [Hugging Face Transformer](https://huggingface.co/docs/transformers) framework to create a binary sentiment classifier for review’s given to highly polarized movies on [IMDb](https://www.imdb.com).
 The dataset is available on the [Hugging Face Github](https://github.com/huggingface/datasets/tree/master/datasets/imdb) page.
 
