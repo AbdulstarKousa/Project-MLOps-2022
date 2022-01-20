@@ -1,9 +1,11 @@
 FROM pytorch/torchserve:0.3.0-cpu
 
-COPY model_store/ model_store/
+
 COPY requirements_deploy.txt requirement.txt
 
 RUN pip install -r requirement.txt --no-cache-dir
+
+RUN dvc pull model_store
 
 USER root
 

@@ -1,3 +1,5 @@
 # external requirements
 sklearn
 transformers
+dvc
+dvc[gs]
