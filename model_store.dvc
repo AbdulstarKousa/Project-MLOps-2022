@@ -1,0 +1,5 @@
+outs:
+- md5: 143be63e8273808829019a1f135718ba.dir
+  size: 247111903
+  nfiles: 1
+  path: model_store

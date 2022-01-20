@@ -95,3 +95,4 @@ target/
 
 /models
 /best_model
+/model_store
