@@ -5,7 +5,6 @@ COPY .git/ .git/
 COPY requirements_deploy.txt requirement.txt
 COPY model_store.dvc model_store.dvc
 
-RUN apt-get update && apt-get install -y python3-pip
 RUN pip install --upgrade pip
 RUN pip install -r requirement.txt --no-cache-dir
 
