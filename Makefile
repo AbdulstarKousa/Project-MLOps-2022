@@ -37,6 +37,9 @@ train:
 predict:
 	$(PYTHON_INTERPRETER) src/models/predict_model.py
 
+torchserve:
+	torchserve --start --model-store model_store --models distilbert=distilbert.mar
+
 ## Delete all compiled Python files
 clean:
 	find . -type f -name "*.py[co]" -delete
