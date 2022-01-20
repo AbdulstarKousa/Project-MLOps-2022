@@ -8,6 +8,10 @@ A short description of the project:
 - To get setup with both code and data by simply running:
     - `git clone https://github.com/AbdulstarKousa/Project-MLOps-2022.git`
     - `dvc pull`
+- To pull the docker image from the gcp server:
+    - `docker pull gcr.io/gcr.io/team-x-338109/main:latest`
+- To run the docker image interactively:
+    - `docker run -it gcr.io/gcr.io/team-x-338109/main:latest`
 
 In this project we make use of the [Hugging Face Transformer](https://huggingface.co/docs/transformers) framework to create a binary sentiment classifier for review’s given to highly polarized movies on [IMDb](https://www.imdb.com).
 The dataset is available on the [Hugging Face Github](https://github.com/huggingface/datasets/tree/master/datasets/imdb) page.
