@@ -6,6 +6,8 @@ COPY .git/ .git/
 COPY requirements_deploy.txt requirement.txt
 COPY model_store.dvc model_store.dvc
 
+RUN chmod +rwx .dvc/
+
 RUN pip install --upgrade pip
 RUN pip install -r requirement.txt --no-cache-dir
 
