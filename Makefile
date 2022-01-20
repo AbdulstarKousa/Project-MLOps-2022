@@ -40,6 +40,15 @@ predict:
 torchserve:
 	torchserve --start --model-store model_store --models distilbert=distilbert.mar
 
+torch-model:
+	torch-model-archiver --model-name=distilbert \
+	 --force \
+	 --version=1.0 \
+	 --serialized-file=best_model/pytorch_model.bin \
+	 --export-path model_store \
+	 --extra-files "best_model/config.json,best_model/vocab.txt" \
+	 --handler "best_model/torchserve_handler.py"
+
 ## Delete all compiled Python files
 clean:
 	find . -type f -name "*.py[co]" -delete
